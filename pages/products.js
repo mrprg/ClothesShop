@@ -2,14 +2,15 @@ import clientPromise from "../lib/mongodb";
 
 export default function Movies({ product }) {
   return (
-    <div>
-      <h1>Best Clothes Shop Ever 🗿</h1>
+    <div className="w-100">
+      <h1 className="text-red-500 text-5xl">
+        Best Clothes Shop Ever 🗿
+      </h1>
       <ul>
         {product.map((product) => (
           <li>
-            <h2>{product.title}</h2>
-            <h3>{product.metacritic}</h3>
-            <p>{product.desc}</p>
+            <h2 className="mt-5 ml-5 text-2xl">{product.title}</h2>
+            <p className="mt-2 ml-5 text-xl text-slate-600">{product.desc}</p>
           </li>
         ))}
       </ul>
@@ -30,7 +31,9 @@ export async function getServerSideProps() {
       .toArray();
 
     return {
-      props: { product: JSON.parse(JSON.stringify(movies)) },
+      props: {
+        product: JSON.parse(JSON.stringify(movies)),
+      },
     };
   } catch (e) {
     console.error(e);
