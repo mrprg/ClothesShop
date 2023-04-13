@@ -3,34 +3,42 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { signIn } from "next-auth/react";
 
 export const authOptions = {
+  session: {
+    strategy: "jwt",
+  },
   providers: [
     CredentialsProvider({
       name: "Credentials",
-
       credentials: {
-        email: { label: "Username", type: "text", placeholder: "jsmith" },
-        password: { label: "Password", type: "password" },
+        email: {
+          label: "Email",
+          type: "text",
+          placeholder: "jsmith@gmail.com",
+        },
+
+        password: {
+          label: "Password",
+          type: "password",
+        },
       },
       async authorize(credentials, req) {
-        const user = {
-          id: "1",
-          name: "J Smith",
-          email: "jsmith@gmail.com",
-          password: "123456",
-        };
+        const { email, password } = credentials;
+        // {
+        //   id: "1",
+        //   name: "J Smith",
+        //   email: "jsmith@gmail.com",
+        //   password: "123456",
+        // };
 
-        if (
-          credentials.email == user.email &&
-          credentials.password == user.password
-        ) {
-          return user;
+        if (dbUser) {
+          if (dbUser.password == password) return dbuser;
         } else {
           return null;
         }
       },
     }),
   ],
-  // pages: { signIn: "/auth/signin" },
+  pages: { signIn: "/auth/signin" },
 };
 
 export default NextAuth(authOptions);
