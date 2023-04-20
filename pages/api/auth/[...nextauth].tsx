@@ -15,15 +15,16 @@ const authOptions: NextAuthOptions = {
           password: string;
         };
       
-        if (email !== "john@gmail.com" || password !== "1234") {
+        if (email !== "john@gmail.com" || password !== "12345678") {
           throw new Error("invalid credentials");
         }
 
         return {
-          id: "1234",
+          id: "1",
           name: "John Doe",
           email: "john@gmail.com",
           role: "admin",
+          password:"12345678",
         };
       },
     }),
