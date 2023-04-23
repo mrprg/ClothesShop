@@ -51,9 +51,9 @@ export default function SignIn() {
     <div className="flex justify-center items-center h-screen bg-gray-100">
       <div className="card w-96 bg-white shadow-2xl rounded-md">
         <div className="card-body p-6">
-          <h2 className="text-2xl font-bold pb-6">Login</h2>
-          <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
-            <div className="input-wrapper flex flex-col">
+          <h2 className="text-2xl font-bold text-center mb-4">Login</h2>
+          <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 items-center">
+            <div className="input-wrapper flex flex-col w-full max-w-md">
               <label htmlFor="email" className="text-sm font-semibold text-gray-700">
                 Email
               </label>
@@ -66,7 +66,7 @@ export default function SignIn() {
                     message: "Invalid email address",
                   },
                 })}
-                className="input input-bordered w-full text-gray-700 border-gray-400"
+                className="input input-bordered w-full text-gray-700 bg-gray-200 border-gray-400 focus:bg-white focus:border-blue-500"
               />
               {errors.email && (
                 <p className="text-xs italic text-red-500 pt-1">
@@ -74,8 +74,8 @@ export default function SignIn() {
                 </p>
               )}
             </div>
-
-            <div className="input-wrapper flex flex-col">
+  
+            <div className="input-wrapper flex flex-col w-full max-w-md">
               <label htmlFor="password" className="text-sm font-semibold text-gray-700">
                 Password
               </label>
@@ -88,7 +88,7 @@ export default function SignIn() {
                     message: "Password must be at least 8 characters",
                   },
                 })}
-                className="input input-bordered w-full text-gray-700 border-gray-400"
+                className="input input-bordered w-full text-gray-700 bg-gray-200 border-gray-400 focus:bg-white focus:border-blue-500 "
               />
               {errors.password && (
                 <p className="text-xs italic text-red-500 pt-1">
@@ -96,20 +96,19 @@ export default function SignIn() {
                 </p>
               )}
             </div>
-
+  
             <div className="input-wrapper flex justify-center pt-6">
-              {
-                <button
-                  type="submit"
-                  className={`btn ${isLoading ? "loading" : ""}`}
-                >
-                  {isLoading ? "Loading..." : "Submit"}
-                </button>
-              }
+              <button
+                type="submit"
+                className={`btn bg-blue-500 text-white ${isLoading ? "loading" : ""} bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded`}
+              >
+                {isLoading ? "Loading..." : "Submit"}
+              </button>
             </div>
           </form>
         </div>
-        </div>
-        </div>
-  ); 
-            }
+      </div>
+    </div>
+  );
+  
+            }  
