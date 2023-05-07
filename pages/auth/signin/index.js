@@ -1,27 +1,19 @@
 import { signIn } from "next-auth/react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import { useSession } from "next-auth/react";
-
-interface IFormInput {
-  username: String;
-  email: String;
-  password: String;
-}
 
 export default function SignIn() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IFormInput>();
+  } = useForm();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
   // Form submission handler
-  const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+  const onSubmit = async (data) => {
     setIsLoading(true);
     const res = await signIn("credentials", {
       email: data.email,
@@ -52,9 +44,15 @@ export default function SignIn() {
       <div className="card w-96 bg-white shadow-2xl rounded-md">
         <div className="card-body p-6">
           <h2 className="text-2xl font-bold text-center mb-4">Login</h2>
-          <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4 items-center">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="flex flex-col gap-4 items-center"
+          >
             <div className="input-wrapper flex flex-col w-full max-w-md">
-              <label htmlFor="email" className="text-sm font-semibold text-gray-700">
+              <label
+                htmlFor="email"
+                className="text-sm font-semibold text-gray-700"
+              >
                 Email
               </label>
               <input
@@ -74,9 +72,12 @@ export default function SignIn() {
                 </p>
               )}
             </div>
-  
+
             <div className="input-wrapper flex flex-col w-full max-w-md">
-              <label htmlFor="password" className="text-sm font-semibold text-gray-700">
+              <label
+                htmlFor="password"
+                className="text-sm font-semibold text-gray-700"
+              >
                 Password
               </label>
               <input
@@ -96,11 +97,13 @@ export default function SignIn() {
                 </p>
               )}
             </div>
-  
+
             <div className="input-wrapper flex justify-center pt-6">
               <button
                 type="submit"
-                className={`btn bg-blue-500 text-white ${isLoading ? "loading" : ""} bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded`}
+                className={`btn bg-blue-500 text-white ${
+                  isLoading ? "loading" : ""
+                } bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded`}
               >
                 {isLoading ? "Loading..." : "Submit"}
               </button>
@@ -110,5 +113,4 @@ export default function SignIn() {
       </div>
     </div>
   );
-  
-            }  
+}
