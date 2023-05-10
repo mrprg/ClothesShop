@@ -34,7 +34,9 @@ export default function Home(isConnected) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Main />
-      <main></main>
+      <main>
+        <div></div>
+      </main>
 
       <footer>
         <a
