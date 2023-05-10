@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@lottiefiles/react-lottie-player": "^3.5.3",
     "mongodb": "^4.8.1",
     "next": "latest",
     "next-auth": "^4.22.0",
