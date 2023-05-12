@@ -1,19 +1,28 @@
-import { signIn } from "next-auth/react";
-import { useForm } from "react-hook-form";
+import { signIn} from "next-auth/react";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+// import { useSession,signOut} from "next-auth/react";
+
+
+interface IFormInput {
+  username: String;
+  email: String;
+  password: String;
+}
 
 export default function SignIn() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<IFormInput>();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
   // Form submission handler
-  const onSubmit = async (data) => {
+  const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     setIsLoading(true);
     const res = await signIn("credentials", {
       email: data.email,
@@ -38,6 +47,14 @@ export default function SignIn() {
       setIsLoading(false);
     }
   };
+  // const handleLoginUser = async (data) => {
+  //   data.preventDefault();
+  //   await signIn("credentials", {
+  //     redirect: true,
+  //     email: data.email,
+  //     password: data.password,
+  //   });
+  // };
 
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100">
@@ -72,7 +89,6 @@ export default function SignIn() {
                 </p>
               )}
             </div>
-
             <div className="input-wrapper flex flex-col w-full max-w-md">
               <label
                 htmlFor="password"
@@ -98,17 +114,18 @@ export default function SignIn() {
               )}
             </div>
 
-            <div className="input-wrapper flex justify-center pt-6">
+            <div className="input-wrapper flex justify-center pt-6">{ 
               <button
                 type="submit"
-                className={`btn bg-blue-500 text-white ${
-                  isLoading ? "loading" : ""
-                } bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded`}
+        
+                className={`btn bg-blue-500 text-white bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded`}
               >
                 {isLoading ? "Loading..." : "Submit"}
               </button>
+              }
             </div>
           </form>
+        
         </div>
       </div>
     </div>
