@@ -60,7 +60,7 @@ export default function SignIn() {
     <div className="flex justify-center items-center h-screen bg-gray-100">
       <div className="card w-96 bg-white shadow-2xl rounded-md">
         <div className="card-body p-6">
-          <h2 className="text-2xl font-bold text-center mb-4">Login</h2>
+          <h2 className="text-2xl font-bold text-center mb-4">Sign In</h2>
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col gap-4 items-center"

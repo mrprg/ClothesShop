@@ -19,12 +19,15 @@ const authOptions = {
           label: "Email",
           type: "text",
         },
-        password: { label: "Password", type: "password" },
+        password: {
+          label: "Password",
+          type: "password",
+        },
       },
-
       async authorize(credentials, req) {
         const { email, password } = credentials;
 
+        // MongoDB connection
         const client = await MongoClient.connect(
           `mongodb+srv://mrprg:asadi23577@cluster0.dh2ry2j.mongodb.net/clothes-next?retryWrites=true&w=majority`,
           {
@@ -34,17 +37,30 @@ const authOptions = {
         );
         const db = client.db("clothes-next13");
 
-        const user = await db.collection("users").findOne({ email });
-        if (user && user.password === password) {
-          return user;
-        } else {
-          return user;
+        const existingUser = await db.collection("users").findOne({ email });
+        if (existingUser) {
+          await client.close();
+          return existingUser;
         }
+
+        const newUser = {
+          email,
+          password,
+        };
+
+        const result = await db.collection("users").insertOne(newUser);
+
+        newUser._id = result.insertedId;
+
+        await client.close();
+
+        return newUser;
       },
     }),
   ],
   pages: {
-    signIn: "/auth/signin",
+    signIn: "/auth/signup",
+    signUp: "/auth/login",
   },
 };
 
