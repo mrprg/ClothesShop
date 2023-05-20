@@ -59,8 +59,10 @@ const authOptions = {
     }),
   ],
   pages: {
-    signIn: "/auth/signup",
+    // signIn: "/auth/signup",
+    signIn: "/dashboard",
     signUp: "/auth/login",
+    // newUser: "/admin",
   },
 };
 
