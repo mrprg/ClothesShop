@@ -1,12 +1,12 @@
 // pages/dashboard.js
 
 import React from "react";
-import Sidebar from "../components/Sidebar";
-import Header from "../components/Header";
-import UserProfile from "../components/UserProfile";
-import Notification from "../components/Notification";
-import Widgets from "../components/Widget";
-import DataTableComponent from "../components/DataTableComponent";
+import Sidebar from "./components/Sidebar";
+import Header from "./components/Header";
+import UserProfile from "./components/UserProfile";
+import Notification from "./components/Notification";
+import Widgets from "./components/Widget";
+import DataTableComponent from "./components/DataTableComponent";
 
 const Dashboard = () => {
   return (
