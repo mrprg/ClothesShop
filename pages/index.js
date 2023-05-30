@@ -1,8 +1,6 @@
 import Head from "next/head";
 import clientPromise from "../lib/mongodb";
-import { InferGetServerSidePropsType } from "next";
-
-import Header from "../src/components/Header";
+import Layout from "../src/components/LayoutComponent/Layout";
 
 export async function getServerSideProps(context) {
   try {
@@ -22,12 +20,13 @@ export async function getServerSideProps(context) {
 export default function Home(isConnected) {
   return (
     <div className="container mx-auto max-w-full">
-      <Header />
-      <main>
-        <div></div>
-      </main>
-
-      <footer></footer>
+      <Layout>
+        <Head>
+          <title>E-Commerce Store</title>
+          <link rel="icon" href="" />
+        </Head>
+        <p>content here</p>
+      </Layout>
     </div>
   );
 }
