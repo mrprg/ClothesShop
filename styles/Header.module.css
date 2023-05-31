@@ -1,0 +1,9 @@
+.icons {
+    transition: color 0.3s ease-in-out;
+    
+}
+
+.icons:hover {
+    color:#abb67d;
+    
+}
