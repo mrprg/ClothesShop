@@ -1,6 +1,7 @@
 import Head from "next/head";
 import clientPromise from "../lib/mongodb";
 import Layout from "../src/components/LayoutComponent/Layout";
+import SliderComponent from "../src/components/SliderComponent";
 
 export async function getServerSideProps(context) {
   try {
@@ -26,6 +27,7 @@ export default function Home(isConnected) {
           <link rel="icon" href="" />
         </Head>
         <p>content here</p>
+        <SliderComponent />
       </Layout>
     </div>
   );
