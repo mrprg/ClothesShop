@@ -1,7 +1,7 @@
 import React from "react";
 import Main from "./Main";
 import { FaInstagram, FaFacebook, FaPinterest } from "react-icons/fa";
-import styles from "../../styles/Header.module.css";
+import css from "../../styles/Header.module.css";
 
 const Header = () => {
   return (
@@ -11,24 +11,22 @@ const Header = () => {
           <a href="#" className="text-black hover:text-gray-400">
             <FaInstagram
               size={21}
-              color="#888888"
               style={{ marginRight: "5px" }}
-              className={styles["icons"]}
+              className={css.icons}
             />
           </a>
           <a href="#" className="text-black hover:text-gray-400">
             <FaFacebook
               size={21}
-              color="#888888"
               style={{ marginRight: "5px" }}
-              className={styles["icons"]}
+              className={css.icons}
             />
           </a>
           <a href="#" className="text-black hover:text-gray-400">
             <FaPinterest
               size={21}
-              color="#888888"
               style={{ marginRight: "5px" }}
+              className={css.icons}
             />
           </a>
         </div>

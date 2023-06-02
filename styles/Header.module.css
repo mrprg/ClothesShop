@@ -1,9 +1,11 @@
 .icons {
+    color:#888888;
+    
     transition: color 0.3s ease-in-out;
     
 }
 
 .icons:hover {
-    color:#abb67d;
+    color:#292828;
     
 }
