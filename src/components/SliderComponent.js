@@ -6,17 +6,27 @@ import css from "../../styles/Slider.module.css";
 
 const SliderComponent = () => {
   const settings = {
-    dots: true, // Show navigation dots
-    infinite: true, // Enable infinite loop
-    speed: 500, // Transition speed in milliseconds
-    slidesToShow: 1, // Number of slides to show at a time
-    slidesToScroll: 1, // Number of slides to scroll at a time
-    autoplay: true, // Enable autoplay
-    autoplaySpeed: 3000, // Autoplay speed in milliseconds
-    arrows: true, // Show navigation arrows
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    arrows: true,
+    appendDots: (dots) => (
+      <div>
+        <ul className={css.dots}>{dots}</ul>
+        <div className={css.sliderText}>
+          <button className={css.shopNowButton}>Shop Now</button>
+          <p className={css.newArrivalsText}>New Arrivals</p>
+        </div>
+      </div>
+    ),
   };
+
   return (
-    <Slider {...settings} className={css.slider}>
+    <Slider {...settings} className={`${css.slider} h-6`}>
       <div>
         <img
           src="https://img.freepik.com/free-photo/black-t-shirts-with-copy-space_53876-102012.jpg?w=826&t=st=1685731953~exp=1685732553~hmac=ea6d12197a0b0b68e0be348e397a9285874ffd5a14bb0fbaee5b14c0fe499763"
@@ -35,7 +45,6 @@ const SliderComponent = () => {
           alt="Image 3"
         />
       </div>
-
       <div>
         <img
           src="https://img.freepik.com/free-photo/footwear_1303-5880.jpg?w=826&t=st=1685732218~exp=1685732818~hmac=fa65ea870a5f024d980d7a2872690e340c47253a41ad92eb6251974fa907baa4"

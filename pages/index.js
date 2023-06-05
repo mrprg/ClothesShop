@@ -26,7 +26,7 @@ export default function Home(isConnected) {
           <title>E-Commerce Store</title>
           <link rel="icon" href="" />
         </Head>
-        <p>content here</p>
+        {/* <p>content here</p> */}
         <SliderComponent />
       </Layout>
     </div>
