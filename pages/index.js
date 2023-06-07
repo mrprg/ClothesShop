@@ -3,7 +3,6 @@ import clientPromise from "../lib/mongodb";
 import Layout from "../src/components/LayoutComponent/Layout";
 import SliderComponent from "../src/components/SliderComponent";
 import Category from "../src/components/Category";
-import FeaturedProducts from "../src/components/FeaturedProducts";
 
 export async function getServerSideProps(context) {
   try {
@@ -30,7 +29,6 @@ export default function Home(isConnected) {
         </Head>
         <SliderComponent />
         <Category />
-        <FeaturedProducts />
       </Layout>
     </div>
   );
