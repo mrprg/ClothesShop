@@ -12,16 +12,21 @@ function Product({ product }) {
   }
 
   return (
-    <div>
-      <h1>{product.title}</h1>
-      <p>{product.description}</p>
-      <p>Price: ${product.price}</p>
-      <Image
-        src={product.imageUrl}
-        width={500}
-        height={500}
-        alt="product-image"
-      />
+    <div className="rounded-l-lg w-full h-[100vh] flex items-center justify-center">
+      <div dir="rtl" className="rounded-lg flex bg-slate-100">
+        <div  className="w-[500px] pt-[20px] pr-[30px]">
+          <h1 className="text-[22px] font-bold"><span className="text-slate-500 text-[17px]">نوع لباس : </span>{product.title}</h1>
+          <p>{product.description}</p>
+          <p>Price: ${product.price}</p>
+        </div>
+        <Image
+          className="rounded-l-lg"
+          src={product.imageUrl}
+          width={500}
+          height={500}
+          alt="product-image"
+        />
+      </div>
     </div>
   );
 }

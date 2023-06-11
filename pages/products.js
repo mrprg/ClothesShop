@@ -1,93 +1,141 @@
 import Image from "next/image";
 import clientPromise from "../lib/mongodb";
 import Link from "next/link";
+import FilterProduct from "../components/FilterProduct";
 
-const clothesType = ["مردانه", "زنانه", "بچگانه"];
-const clothesSize = ["M", "L", "XL", "2XL"];
-
-export default function Product({ products }) {
+export default function Product({
+  products,
+  currentPage,
+  totalPages,
+}) {
   return (
     <div className="flex justify-between px-[150px]">
-      <div
-        dir="rtl"
-        className="w-[300px] h-[500px] border-y-0 border-l-0 mt-[40px] border">
-        <div>
-          <h1 className="mr-[14px] mt-[10px] font-semibold text-lg">
-            نوع لباس
-          </h1>
-          {clothesType.map((type) => (
-            <button className="flex items-center mt-[25px] mr-[14px] pr-1 py-2 text-sm w-[150px] h-[30px] font-medium rounded-md hover:bg-green-500 hover:scale-105 hover:text-white active:scale-95 transition-all duration-300">
-              {type}
-            </button>
-          ))}
-        </div>
-        <div className="h-[1px] w-[230px] bg-slate-200 mr-3 my-4"></div>
-        <div>
-          <h1 className="mr-[16px] mb-3 font-semibold text-lg">
-            سایز
-          </h1>
-          {clothesSize.map((size) => (
-            <button
-              onClick={(e) => console.log(e.target.value)}
-              value={size}
-              className="rounded-full mx-[14px] bg-green-500 text-white hover:scale-125 active:scale-95 transition-all duration-300 w-8 h-8 text-[12px] font-bold">
-              {size}
-            </button>
-          ))}
-        </div>
-        <div className="h-[1px] w-[230px] bg-slate-200 mr-3 my-8"></div>
-        <div className="w-[250px] flex items-center justify-center">
-          <input
-            type="search"
-            placeholder="search"
-            className="flex items-center pt-2 pb-3 outline-none border w-[200px] h-[35px] pr-[20px] text-sm rounded-lg focus:border-green-500  transition-all duration-500"
-          />
-        </div>
-      </div>
+      <FilterProduct />
 
       <div dir="rtl">
-        <h1 className="font-bold text-2xl my-[40px]">همه محصولات</h1>
+        <h1 className="font-bold text-2xl my-[40px]">
+          همه محصولات
+        </h1>
         {/* main div that contains all of the products */}
-        <div className="w-[1200px] grid grid-cols-3 gap-1">
-          {
-            products.map((item)=> (
-              <div>
-                <Image
+        <div className="w-[1200px] grid grid-cols-3">
+          {products.map((item) => (
+            <div className="w-[330px] mb-[35px] ml-[10px] shadow-xl hover:scale-105 transition-all">
+              <Image
+                className="object-cover rounded-md rounded-b-none w-[330px] h-[380px]"
                 src={item.imageUrl}
                 width={300}
                 height={500}
                 alt="fashion-clothe"
-                />
-                <div>
-
+              />
+              <div className="w-[330px] h-[230px] bg-slate-100 pr-3 pt-2">
+                <h1 className="w-[100px] font-[600] text-l mb-3">
+                  {item.title}
+                </h1>
+                <p className="w-[300px] font-[500] mb-[15px] text-slate-500">
+                  {item.description}
+                </p>
+                <p className="text-[15px] font-[500] mb-[15px]">
+                  سایز :{" "}
+                  <span className="text-[18px] text-slate-500">
+                    {item.size}
+                  </span>
+                </p>
+                <p className="text-[15px] font-[500] mb-[25px]">
+                  قیمت :{" "}
+                  <span className="text-[18px] text-red-800">
+                    {item.price}
+                  </span>{" "}
+                  <span className="text-[13px] font-[500]">
+                    تومان
+                  </span>
+                </p>
+                <div className="flex">
+                  <button className="bg-red-700 h-[35px] ml-[10px] rounded-md text-white text-[15px] font-[500] pb-1 w-[120px] hover:border hover:border-red-700 hover:bg-white hover:text-red-700 transition-all active:scale-95">
+                    خرید
+                  </button>
+                  <Link href={`product/${item._id}`}>
+                    <button className="bg-white h-[35px] ml-[10px] rounded-md text-red-700 text-[15px] font-[500] pb-1 w-[160px] border hover:border-red-700 hover:scale-105 transition-transform">
+                      مشاهده محصول
+                    </button>
+                  </Link>
                 </div>
               </div>
-            ))
-          }
+            </div>
+          ))}
+        </div>
+
+        {/* pagination links */}
+        <div className="flex justify-center my-8">
+          {Array.from({ length: totalPages }).map(
+            (_, index) => (
+              <Link
+                href={{
+                  pathname: "/products",
+                  query: { page: index + 1 },
+                }}
+                key={index}>
+                <p
+                  className={`rounded-full w-10 h-10 flex items-center justify-center mx-2 text-lg font-bold ${
+                    currentPage === index + 1
+                      ? "bg-red-700 text-white"
+                      : "text-gray-500 hover:text-red-700"
+                  }`}>
+                  {index + 1}
+                </p>
+              </Link>
+            )
+          )}
         </div>
       </div>
     </div>
   );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ query }) {
   try {
     const client = await clientPromise;
     const db = client.db("clothes-next13");
 
+    // retrieve query parameters
+    const page = parseInt(query?.page ?? 1);
+    const pageSize = 3;
+
+    // calculate skip value based on page and page size
+    const skip = (page - 1) * pageSize;
+
+    // retrieve a page of products based on skip and limit values
     const products = await db
       .collection("products")
       .find({})
       .sort({ metacritic: -1 })
-      .limit(4)
+      .skip(skip)
+      .limit(pageSize)
       .toArray();
+
+    // count total number of products in the collection
+    const totalProducts = await db
+      .collection("products")
+      .countDocuments({});
+
+    // calculate total number of pages based on page size and total products
+    const totalPages = Math.ceil(totalProducts / pageSize);
 
     return {
       props: {
         products: JSON.parse(JSON.stringify(products)),
+        currentPage: page,
+        totalPages,
       },
     };
   } catch (e) {
     console.error(e);
+
+    return {
+      props: {
+        products: [],
+        currentPage: 1,
+        totalPages: 1,
+      },
+    };
   }
 }
