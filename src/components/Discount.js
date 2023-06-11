@@ -25,7 +25,7 @@ const Discount = () => {
   const seconds = countdown % 60;
 
   return (
-    <section className="bg-slate-100 flex items-center justify-center space-x-10">
+    <section className="bg-slate-100 flex items-center justify-center space-x-10 mt-9 mb-16 ">
       <div className="relative ">
         <img
           src="https://preview.colorlib.com/theme/fashe/images/banner-08.jpg"
@@ -54,7 +54,7 @@ const Discount = () => {
           alt="Shop Item Image"
         />
         <div className="tracking-wide text-center absolute bottom-2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <p className="text-center py-4">Gafas sol Hawkers one</p>
+          <p className="text-center">Gafas sol Hawkers one</p>
           <p className="text-center p-3">
             <span className="line-through px-3">$29.50</span>
             <span className="text-red-500">$15.90</span>

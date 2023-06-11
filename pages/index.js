@@ -4,6 +4,8 @@ import Layout from "../src/components/LayoutComponent/Layout";
 import SliderComponent from "../src/components/SliderComponent";
 import Category from "../src/components/Category";
 import Discount from "../src/components/Discount";
+import OurBlog from "../src/components/OurBlog";
+import AccordionMenu from "../src/components/AccordionMenu";
 
 export async function getServerSideProps(context) {
   try {
@@ -31,6 +33,8 @@ export default function Home(isConnected) {
         <SliderComponent />
         <Category />
         <Discount />
+        <OurBlog />
+        <AccordionMenu />
       </Layout>
     </div>
   );
