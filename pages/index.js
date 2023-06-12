@@ -6,6 +6,7 @@ import Category from "../src/components/Category";
 import Discount from "../src/components/Discount";
 import OurBlog from "../src/components/OurBlog";
 import AccordionMenu from "../src/components/AccordionMenu";
+import Shipping from "../src/components/Shipping";
 
 export async function getServerSideProps(context) {
   try {
@@ -35,6 +36,7 @@ export default function Home(isConnected) {
         <Discount />
         <OurBlog />
         <AccordionMenu />
+        <Shipping />
       </Layout>
     </div>
   );
