@@ -1,70 +1,86 @@
-import { useState } from "react";
-import Head from "next/head";
+import { Disclosure } from "@headlessui/react";
+import { ChevronUpIcon } from "@heroicons/react/20/solid";
 
-const YourPage = () => {
-  const [activeButton, setActiveButton] = useState(null);
-
-  const handleClick = (buttonId) => {
-    setActiveButton(activeButton === buttonId ? null : buttonId);
-  };
-
+const AccordionMenuComponent = () => {
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <Head>
-        <title>Accordion Menu Example</title>
-      </Head>
-
-      <div className="w-96">
-        <button
-          className={`w-full bg-gray-200 text-left p-4 outline-none focus:outline-none ${
-            activeButton === 1 ? "bg-blue-500 text-white" : ""
-          }`}
-          onClick={() => handleClick(1)}
-        >
-          Button 1
-        </button>
-        {activeButton === 1 && (
-          <div className="w-full bg-white p-4">
-            <ul>
-              <li className="py-2">Item 1</li>
-            </ul>
-          </div>
-        )}
-
-        <button
-          className={`w-full bg-gray-200 text-left p-4 outline-none focus:outline-none ${
-            activeButton === 2 ? "bg-blue-500 text-white" : ""
-          }`}
-          onClick={() => handleClick(2)}
-        >
-          Button 2
-        </button>
-        {activeButton === 2 && (
-          <div className="w-full bg-white p-4">
-            <ul>
-              <li className="py-2">Item 2</li>
-            </ul>
-          </div>
-        )}
-
-        <button
-          className={`w-full bg-gray-200 text-left p-4 outline-none focus:outline-none ${
-            activeButton === 3 ? "bg-blue-500 text-white" : ""
-          }`}
-          onClick={() => handleClick(3)}
-        >
-          Button 3
-        </button>
-        {activeButton === 3 && (
-          <div className="w-full bg-white p-4">
-            <ul>
-              <li className="py-2">Item 3</li>
-            </ul>
-          </div>
-        )}
+    <div className="w-full px-4 pt-16">
+      <div className="mx-auto w-full max-w-5xl rounded-2xl bg-white p-2">
+        <Disclosure>
+          {({ open }) => (
+            <>
+              <Disclosure.Button
+                className="flex w-full justify-between rounded-lg bg-gray-100 px-6 py-3 
+                text-left text-lg font-medium text-red-900 hover:bg-gray-200 focus:outline-none 
+                focus-visible:ring focus-visible:ring-gray-500 focus-visible:ring-opacity-75"
+              >
+                <span>What is your refund policy?</span>
+                <ChevronUpIcon
+                  className={`${
+                    open ? "rotate-180 transform" : ""
+                  } h-6 w-6 text-red-600`}
+                />
+              </Disclosure.Button>
+              <Disclosure.Panel className="px-6 pt-4 pb-2 text-lg text-gray-500">
+                If you're unhappy with your purchase for any reason, email us
+                within 90 days and we'll refund you in full, no questions asked.
+              </Disclosure.Panel>
+            </>
+          )}
+        </Disclosure>
+        <Disclosure as="div" className="mt-2">
+          {({ open }) => (
+            <>
+              <Disclosure.Button className="flex w-full justify-between rounded-lg bg-gray-100 px-6 py-3 text-left text-lg font-medium text-red-900 hover:bg-gray-200 focus:outline-none focus-visible:ring focus-visible:ring-gray-500 focus-visible:ring-opacity-75">
+                <span>Do you offer technical support?</span>
+                <ChevronUpIcon
+                  className={`${
+                    open ? "rotate-180 transform" : ""
+                  } h-6 w-6 text-red-600`}
+                />
+              </Disclosure.Button>
+              <Disclosure.Panel className="px-6 pt-4 pb-2 text-lg text-gray-500">
+                No.
+              </Disclosure.Panel>
+            </>
+          )}
+        </Disclosure>
+        <Disclosure as="div" className="mt-2">
+          {({ open }) => (
+            <>
+              <Disclosure.Button className="flex w-full justify-between rounded-lg bg-gray-100 px-6 py-3 text-left text-lg font-medium text-red-900 hover:bg-gray-200 focus:outline-none focus-visible:ring focus-visible:ring-gray-500 focus-visible:ring-opacity-75">
+                <span>Do you offer technical support?</span>
+                <ChevronUpIcon
+                  className={`${
+                    open ? "rotate-180 transform" : ""
+                  } h-6 w-6 text-red-600`}
+                />
+              </Disclosure.Button>
+              <Disclosure.Panel className="px-6 pt-4 pb-2 text-lg text-gray-500">
+                No.
+              </Disclosure.Panel>
+            </>
+          )}
+        </Disclosure>
+        <Disclosure as="div" className="mt-2">
+          {({ open }) => (
+            <>
+              <Disclosure.Button className="flex w-full justify-between rounded-lg bg-gray-100 px-6 py-3 text-left text-lg font-medium text-red-900 hover:bg-gray-200 focus:outline-none focus-visible:ring focus-visible:ring-gray-500 focus-visible:ring-opacity-75">
+                <span>Do you offer technical support?</span>
+                <ChevronUpIcon
+                  className={`${
+                    open ? "rotate-180 transform" : ""
+                  } h-6 w-6 text-red-600`}
+                />
+              </Disclosure.Button>
+              <Disclosure.Panel className="px-6 pt-4 pb-2 text-lg text-gray-500">
+                No.
+              </Disclosure.Panel>
+            </>
+          )}
+        </Disclosure>
       </div>
     </div>
   );
 };
 
-export default YourPage;
+export default AccordionMenuComponent;

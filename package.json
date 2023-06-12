@@ -6,6 +6,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.15",
+    "@heroicons/react": "^2.0.18",
     "@lottiefiles/react-lottie-player": "^3.5.3",
     "@material-tailwind/react": "^2.0.1",
     "mongodb": "^4.8.1",
