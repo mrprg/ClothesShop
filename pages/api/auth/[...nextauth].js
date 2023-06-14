@@ -1,10 +1,11 @@
 import { Document, MongoClient, WithId } from "mongodb";
-import NextAuth, { NextAuthOptions } from "next-auth";
+import NextAuth, { NextAuthOptions, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import clientPromise from "../../../lib/mongodb";
-// import User from "../../../model/schema";
+// import { NextApiRequest, NextApiResponse } from "next";
+import { useCallback } from "react";
+import { useRouter } from "next/router";
 
-// connect();
 // authOptions
 const authOptions = {
   session: {
@@ -40,6 +41,7 @@ const authOptions = {
         const existingUser = await db.collection("users").findOne({ email });
         if (existingUser) {
           await client.close();
+
           return existingUser;
         }
 

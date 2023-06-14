@@ -43,7 +43,7 @@ export default function SignIn() {
       });
       setIsLoading(false);
     } else {
-      router.push("/");
+      router.push("/admin");
       setIsLoading(false);
     }
   };
