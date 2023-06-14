@@ -15,6 +15,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/index.js", "lib/mongodb.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx" ,"pages/index.js", "pages/auth/sign-2.js", "pages/api/auth/[...nextauth].js", "lib/mongodb.js", "pages/auth/login/index.tsx"],
   "exclude": ["node_modules"]
 }
