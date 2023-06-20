@@ -12,9 +12,9 @@ export default function Product({
     <div className="flex justify-between px-[150px]">
       <FilterProduct />
 
-      <div dir="rtl">
+      <div>
         <h1 className="font-bold text-2xl my-[40px]">
-          همه محصولات
+          All products
         </h1>
         {/* main div that contains all of the products */}
         <div className="w-[1200px] grid grid-cols-3">
@@ -27,7 +27,7 @@ export default function Product({
                 height={500}
                 alt="fashion-clothe"
               />
-              <div className="w-[330px] h-[230px] bg-slate-100 pr-3 pt-2">
+              <div className="w-[330px] h-[230px] bg-slate-100 pl-3 pt-2">
                 <h1 className="w-[100px] font-[600] text-l mb-3">
                   {item.title}
                 </h1>
@@ -35,27 +35,26 @@ export default function Product({
                   {item.description}
                 </p>
                 <p className="text-[15px] font-[500] mb-[15px]">
-                  سایز :{" "}
+                  Size:{" "}
                   <span className="text-[18px] text-slate-500">
                     {item.size}
                   </span>
                 </p>
                 <p className="text-[15px] font-[500] mb-[25px]">
-                  قیمت :{" "}
+                Price :{" "}
                   <span className="text-[18px] text-red-800">
                     {item.price}
                   </span>{" "}
                   <span className="text-[13px] font-[500]">
-                    تومان
-                  </span>
+                  $</span>
                 </p>
                 <div className="flex">
                   <button className="bg-red-700 h-[35px] ml-[10px] rounded-md text-white text-[15px] font-[500] pb-1 w-[120px] hover:border hover:border-red-700 hover:bg-white hover:text-red-700 transition-all active:scale-95">
-                    خرید
+                  Buy
                   </button>
                   <Link href={`product/${item._id}`}>
                     <button className="bg-white h-[35px] ml-[10px] rounded-md text-red-700 text-[15px] font-[500] pb-1 w-[160px] border hover:border-red-700 hover:scale-105 transition-transform">
-                      مشاهده محصول
+                    View Product
                     </button>
                   </Link>
                 </div>

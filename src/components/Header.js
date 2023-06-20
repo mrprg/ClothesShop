@@ -1,28 +1,39 @@
 import React from "react";
 import Main from "./Main";
-import { FaInstagram, FaFacebook, FaPinterest } from "react-icons/fa";
+import {
+  FaInstagram,
+  FaFacebook,
+  FaPinterest,
+} from "react-icons/fa";
 import css from "../../styles/Header.module.css";
+import Link from "next/link";
 
 const Header = () => {
   return (
-    <section>
+    <section className=" sticky top-0 z-50 border border-b-slate-400">
       <topbar className="bg-gray-100 py-4 px-6 flex items-center justify-between">
         <div className="flex items-center space-x-4">
-          <a href="#" className="text-black hover:text-gray-400">
+          <a
+            href="#"
+            className="text-black hover:text-gray-400">
             <FaInstagram
               size={21}
               style={{ marginRight: "5px" }}
               className={css.icons}
             />
           </a>
-          <a href="#" className="text-black hover:text-gray-400">
+          <a
+            href="#"
+            className="text-black hover:text-gray-400">
             <FaFacebook
               size={21}
               style={{ marginRight: "5px" }}
               className={css.icons}
             />
           </a>
-          <a href="#" className="text-black hover:text-gray-400">
+          <a
+            href="#"
+            className="text-black hover:text-gray-400">
             <FaPinterest
               size={21}
               style={{ marginRight: "5px" }}
@@ -44,17 +55,23 @@ const Header = () => {
           <nav className="">
             <ul className="flex justify-center space-x-4">
               <li>
-                <a href="#" className="text-black hover:text-red-600">
+                <Link
+                  href="/"
+                  className="text-black hover:text-red-600">
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-black hover:text-red-600">
+                <Link
+                  href="/products"
+                  className="text-black hover:text-red-600">
                   Products
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-black hover:text-red-600">
+                <a
+                  href="#"
+                  className="text-black hover:text-red-600">
                   Cart
                 </a>
               </li>

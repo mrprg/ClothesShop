@@ -13,14 +13,19 @@ function Product({ product }) {
 
   return (
     <div className="rounded-l-lg w-full h-[100vh] flex items-center justify-center">
-      <div dir="rtl" className="rounded-lg flex bg-slate-100">
-        <div  className="w-[500px] pt-[20px] pr-[30px]">
-          <h1 className="text-[22px] font-bold"><span className="text-slate-500 text-[17px]">نوع لباس : </span>{product.title}</h1>
-          <p>{product.description}</p>
+      <div
+        className="rounded-lg flex bg-slate-200">
+        <div className="flex flex-col items-center w-[500px] h-[400px] pt-[20px]">
+          <h1 className="text-[22px] font-bold mb-4">
+            {product.title}
+          </h1>
+          <p className="w-[250px] text-center font-semibold text-[17px] mb-4">{product.description}</p>
+          <p><span>Size: </span><button>{product.size}</button></p>
           <p>Price: ${product.price}</p>
+
         </div>
         <Image
-          className="rounded-l-lg"
+          className="rounded-r-lg"
           src={product.imageUrl}
           width={500}
           height={500}
