@@ -33,7 +33,7 @@ export default function Home(isConnected) {
         </Head>
         <SliderComponent />
         <Category />
-        <Discount />
+        {/* <Discount /> */}
         <OurBlog />
         <AccordionMenu />
         <Shipping />

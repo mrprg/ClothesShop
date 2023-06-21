@@ -3,9 +3,7 @@ import clientPromise from "../lib/mongodb";
 export default function Movies({ product }) {
   return (
     <div className="w-100">
-      <h1 className="text-red-500 text-5xl">
-        Best Clothes Shop Ever 🗿
-      </h1>
+      <h1 className="text-red-500 text-5xl">Best Clothes Shop Ever 🗿</h1>
       <ul>
         {product.map((product) => (
           <li>
