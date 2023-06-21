@@ -1,6 +1,6 @@
 import Head from "next/head";
 import clientPromise from "../lib/mongodb";
-import Layout from "../src/components/LayoutComponent/Layout";
+import Layout from "./Layout";
 import SliderComponent from "../src/components/SliderComponent";
 import Category from "../src/components/Category";
 import Discount from "../src/components/Discount";
@@ -26,18 +26,16 @@ export async function getServerSideProps(context) {
 export default function Home(isConnected) {
   return (
     <div className="container mx-auto max-w-full">
-      <Layout>
-        <Head>
-          <title>E-Commerce Store</title>
-          <link rel="icon" href="" />
-        </Head>
-        <SliderComponent />
-        <Category />
-        <Discount />
-        <OurBlog />
-        <AccordionMenu />
-        <Shipping />
-      </Layout>
+      <Head>
+        <title>E-Commerce Store</title>
+        <link rel="icon" href="" />
+      </Head>
+      <SliderComponent />
+      <Category />
+      <Discount />
+      <OurBlog />
+      <AccordionMenu />
+      <Shipping />
     </div>
   );
 }

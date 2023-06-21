@@ -1,10 +1,14 @@
-// module.exports = {
-//   async rewrites() {
-//     return [
-//       {
-//         source: "/api/auth/auth-callback",
-//         destination: "/api/auth-callback",
-//       },
-//     ];
-//   },
-// };
+// next.config.js
+
+module.exports = {
+  images: {
+    domains: [
+      "jument.ir",
+      "storage.mixin.ir",
+      "keyshop.ir",
+      "maxbax.com",
+      "pelavar.ir",
+      "cdn1.ruydadiran.com",
+    ],
+  },
+};
