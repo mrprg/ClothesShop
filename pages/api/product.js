@@ -1,19 +1,23 @@
 import clientPromise from "../../lib/mongodb";
 
-export default async (req, res) => {
-  try {
-    const client = await clientPromise;
-    const db = client.db("clothes-next13");
-
-    const products = await db
-      .collection("products")
-      .find({})
-      .sort({ metacritic: -1 })
-      .limit(10)
-      .toArray();
-
-    res.json(products);
-  } catch (e) {
-    console.error(e);
+export default async function handler(req, res) {
+  const client = await clientPromise;
+  const db = client.db("clothes-next13");
+  switch (req.method) {
+    case "POST":
+      let bodyObject = JSON.parse(req.body);
+      let newPost = await db
+        .collection("products")
+        .insertOne(bodyObject);
+      res.json(newPost.ops[0]);
+      break;
+    case "GET":
+      const posts = await db
+        .collection("products")
+        .find({})
+        .toArray();
+      res.json({ status: 200, data: posts });
+      break;
   }
-};
+}
+

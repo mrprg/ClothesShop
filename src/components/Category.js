@@ -81,7 +81,7 @@ const Category = () => {
                         Be the frist to know about the latest fashion news and
                         get exclusive offers
                       </p>
-                      <button className=" uppercase mt-8 rounded-full hover:bg-red-500/80 duration-500 bg-black  p-3 px-12 bg-black  text-white">
+                      <button className=" uppercase mt-8 rounded-full hover:bg-red-500/80 duration-500 bg-black  p-3 px-12   text-white">
                         sign up
                       </button>
                     </div>
