@@ -9,83 +9,18 @@ export default function Product({
   totalPages,
 }) {
   return (
-    <div className="flex justify-between px-[150px]">
-      <FilterProduct />
-
-      <div>
-        <h1 className="font-bold text-2xl my-[40px]">
-          All products
-        </h1>
-        {/* main div that contains all of the products */}
-        <div className="w-[1200px] grid grid-cols-3">
-          {products.map((item) => (
-            <div className="w-[330px] mb-[35px] ml-[10px] shadow-xl hover:scale-105 transition-all">
-              <Image
-                className="object-cover rounded-md rounded-b-none w-[330px] h-[380px]"
-                src={item.imageUrl}
-                width={300}
-                height={500}
-                alt="fashion-clothe"
-              />
-              <div className="w-[330px] h-[230px] bg-slate-100 pl-3 pt-2">
-                <h1 className="w-[100px] font-[600] text-l mb-3">
-                  {item.title}
-                </h1>
-                <p className="w-[300px] font-[500] mb-[15px] text-slate-500">
-                  {item.description}
-                </p>
-                <p className="text-[15px] font-[500] mb-[15px]">
-                  Size:{" "}
-                  <span className="text-[18px] text-slate-500">
-                    {item.size}
-                  </span>
-                </p>
-                <p className="text-[15px] font-[500] mb-[25px]">
-                Price :{" "}
-                  <span className="text-[18px] text-red-800">
-                    {item.price}
-                  </span>{" "}
-                  <span className="text-[13px] font-[500]">
-                  $</span>
-                </p>
-                <div className="flex">
-                  <button className="bg-red-700 h-[35px] ml-[10px] rounded-md text-white text-[15px] font-[500] pb-1 w-[120px] hover:border hover:border-red-700 hover:bg-white hover:text-red-700 transition-all active:scale-95">
-                  Buy
-                  </button>
-                  <Link href={`product/${item._id}`}>
-                    <button className="bg-white h-[35px] ml-[10px] rounded-md text-red-700 text-[15px] font-[500] pb-1 w-[160px] border hover:border-red-700 hover:scale-105 transition-transform">
-                    View Product
-                    </button>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* pagination links */}
-        <div className="flex justify-center my-8">
-          {Array.from({ length: totalPages }).map(
-            (_, index) => (
-              <Link
-                href={{
-                  pathname: "/products",
-                  query: { page: index + 1 },
-                }}
-                key={index}>
-                <p
-                  className={`rounded-full w-10 h-10 flex items-center justify-center mx-2 text-lg font-bold ${
-                    currentPage === index + 1
-                      ? "bg-red-700 text-white"
-                      : "text-gray-500 hover:text-red-700"
-                  }`}>
-                  {index + 1}
-                </p>
-              </Link>
-            )
-          )}
-        </div>
-      </div>
+    <div className="w-100">
+      <h1 className="text-red-500 text-5xl">
+        Best Clothes Shop Ever 🗿
+      </h1>
+      <ul>
+        {product.map((product) => (
+          <li>
+            <h2 className="mt-5 ml-5 text-2xl">{product.title}</h2>
+            <p className="mt-2 ml-5 text-xl text-slate-600">{product.desc}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

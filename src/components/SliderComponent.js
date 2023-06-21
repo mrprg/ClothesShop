@@ -1,70 +1,106 @@
-import React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
 import css from "../../styles/Slider.module.css";
+import MotionDiv from "../components/MotionDiv";
+import { SCALE_UP, SLIDE_LEFT, SLIDE_RIGHT } from "../../lib/framerMotionData";
 
 const SliderComponent = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    arrows: true,
-    appendDots: (dots) => (
-      <div>
-        <ul className={css.dots}>{dots}</ul>
-        <div className={css.sliderText}>
-          <button className={css.shopNowButton}>Shop Now</button>
-          <p className={css.newArrivalsText}>New Arrivals</p>
-        </div>
-      </div>
-    ),
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 1,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 1,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 1,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
   };
+
+  const sliderContents = [
+    {
+      image:
+        "https://preview.colorlib.com/theme/fashe/images/master-slide-01.jpg.webp",
+    },
+    {
+      image:
+        "https://preview.colorlib.com/theme/fashe/images/master-slide-02.jpg.webp",
+    },
+    {
+      image:
+        "https://preview.colorlib.com/theme/fashe/images/master-slide-03.jpg.webp",
+    },
+    {
+      image:
+        "https://preview.colorlib.com/theme/fashe/images/master-slide-04.jpg.webp",
+    },
+  ];
 
   return (
     <div>
-      <Slider {...settings} className={`${css.slider} `}>
-        <div>
-          <img
-            src="https://img.freepik.com/free-photo/black-t-shirts-with-copy-space_53876-102012.jpg?w=826&t=st=1685731953~exp=1685732553~hmac=ea6d12197a0b0b68e0be348e397a9285874ffd5a14bb0fbaee5b14c0fe499763"
-            alt="Image 1"
-          />
-        </div>
-        <div>
-          <img
-            src="https://img.freepik.com/free-photo/lovely-young-parisian-woman-with-brunette-hair-stylish-beret-beige-trench-coat-black-bag-standing-old-stairs-sensitively-posing-outdoors_197531-24472.jpg?w=826&t=st=1685732228~exp=1685732828~hmac=3f0db54b367d1d9d44fbcdb0a94662907e82adc051cbdca2aa3591a5a0488e80"
-            alt="Image 2"
-          />
-        </div>
-        <div>
-          <img
-            src="https://img.freepik.com/free-photo/woman-with-white-tote-bag_53876-102949.jpg?w=826&t=st=1685732239~exp=1685732839~hmac=5d26453203fe32532758265556d5967f664e5208d49853b8593475645c2f4e05"
-            alt="Image 3"
-          />
-        </div>
-        <div>
-          <img
-            src="https://img.freepik.com/free-photo/footwear_1303-5880.jpg?w=826&t=st=1685732218~exp=1685732818~hmac=fa65ea870a5f024d980d7a2872690e340c47253a41ad92eb6251974fa907baa4"
-            alt="Image 4"
-          />
-        </div>
-        <div>
-          <img
-            src="https://img.freepik.com/free-photo/stylish-casual-african-american-man-jeans-jacket-black-beret-clothes-store-trying-new-footwear_627829-13415.jpg?w=826&t=st=1685732190~exp=1685732790~hmac=d863455bcc0466c70b5bab576e896e093fb08e52a2bda979a1a28b70e2d6caa8"
-            alt="Image 5"
-          />
-        </div>
-        <div>
-          <img
-            src="https://img.freepik.com/premium-photo/tattooed-model-black-t-shirt-jeans_53876-163088.jpg?w=826"
-            alt="Image 6"
-          />
-        </div>
-      </Slider>
+      <Carousel
+        draggable
+        swipeable
+        className=" relative"
+        responsive={responsive}
+        customLeftArrow={
+          <button className=" bg-black/40 absolute  hover:bg-red-500/80 duration-500  rounded-full left-2 md:left-10">
+            <ChevronLeftIcon className=" text-white m-2 md:m-3 h-3 w-3 md:w-5 md:h-5" />
+          </button>
+        }
+        customRightArrow={
+          <button className=" bg-black/40 absolute  hover:bg-red-500/80 duration-500   rounded-full right-2 md:right-10">
+            <ChevronRightIcon className=" text-white m-2 md:m-3 h-3 w-3 md:w-5 md:h-5" />
+          </button>
+        }
+      >
+        {sliderContents.map((item, index) => {
+          return (
+            <MotionDiv key={index}>
+              <div className=" group relative ">
+                <div
+                  className={` z-10  flex flex-col items-center absolute md:top-[40%] top-[30%] left-[10%] sm:top-[30%] sm:left-[30%]   md:left-[40%] justify-center `}
+                >
+                  <motion.h1
+                    variants={SLIDE_LEFT}
+                    className={` text-white text-[16px] md:text-[18px] ${css.sliderText}   `}
+                  >
+                    Women Collection 2018
+                  </motion.h1>
+                  <motion.h1
+                    variants={SLIDE_RIGHT}
+                    className=" uppercase text-[40px] md:text-[60px] font-bold tracking-wide text-white"
+                  >
+                    new arrivals
+                  </motion.h1>
+                  <motion.button
+                    variants={SCALE_UP}
+                    className=" bg-white uppercase p-2 md:px-6 px-3 text-sm md:text-base font-[300] tracking-wide hover:bg-red-500/80 duration-500 hover:text-white rounded-full"
+                  >
+                    Shop now
+                  </motion.button>
+                </div>
+                <img
+                  draggable
+                  src={item.image}
+                  className={` md:h-[570px] h-[370px]  object-cover object-center w-full`}
+                />
+              </div>
+            </MotionDiv>
+          );
+        })}
+      </Carousel>
     </div>
   );
 };

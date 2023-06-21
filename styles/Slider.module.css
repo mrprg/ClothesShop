@@ -1,10 +1,10 @@
 .slider img {
   width: 100%;
   filter: brightness(70%);
-  height:500px;
-  object-fit:cover;
+  height: 500px;
+  object-fit: cover;
 }
-.slider h1{
+.slider h1 {
   z-index: 10;
 }
 
@@ -18,16 +18,13 @@
 }
 
 .sliderText {
-  text-align: center;
-  position: absolute;
-  top: -170px;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  font-size: 18px; 
+  line-height: 1.5;
+  letter-spacing: 2px;
 }
 
-
 .shopNowButton {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: black;
   border: none;
   padding: 10px 20px;
@@ -35,23 +32,23 @@
   border-radius: 20px;
   cursor: pointer;
   transition: background-color 0.4s ease;
-  font-family: 'Rubik', sans-serif;
-  
+  font-family: "Rubik", sans-serif;
 }
 
 .shopNowButton:hover {
   transition-delay: 0.1s;
-  background-color: #E4563D;
-  color:#FFFFFF;
-  
+  background-color: #e4563d;
+  color: #ffffff;
 }
 
 .newArrivalsText {
   text-align: center;
-  margin-top:-150px;
+  margin-top: -150px;
   font-size: 3rem;
-  color: #FFFFFF;
-  font-weight:600;
-  font-family: 'Rubik', sans-serif;
+  color: #ffffff;
+  font-weight: 600;
+  font-family: "Rubik", sans-serif;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
+
+
