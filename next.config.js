@@ -9,6 +9,7 @@ module.exports = {
       "maxbax.com",
       "pelavar.ir",
       "cdn1.ruydadiran.com",
+      "preview.colorlib.com",
     ],
   },
 };

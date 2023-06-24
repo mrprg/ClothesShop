@@ -26,18 +26,16 @@ export async function getServerSideProps(context) {
 export default function Home(isConnected) {
   return (
     <div className="container mx-auto max-w-full">
-      <Layout>
-        <Head>
-          <title>E-Commerce Store</title>
-          <link rel="icon" href="" />
-        </Head>
-        <SliderComponent />
-        <Category />
-        <Discount />
-        <OurBlog />
-        <AccordionMenu />
-        <Shipping />
-      </Layout>
+      <Head>
+        <title>E-Commerce Store</title>
+        <link rel="icon" href="" />
+      </Head>
+      <SliderComponent />
+      <Category />
+      {/* <Discount /> */}
+      <OurBlog />
+      <AccordionMenu />
+      <Shipping />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import css from "../../styles/Category.module.css";
+import Image from "next/image";
 
 const categoryContents = [
   [
@@ -22,14 +23,14 @@ const categoryContents = [
       name: "watches",
     },
     {
-      image: "https://preview.colorlib.com/theme/fashe/images/banner-04.jpg",
+      image: "https://preview.colorlib.com/theme/fashe/images/banner-07.jpg",
       isOffSection: false,
       name: "footerwear",
     },
   ],
   [
     {
-      image: "https://preview.colorlib.com/theme/fashe/images/banner-07.jpg",
+      image: "https://preview.colorlib.com/theme/fashe/images/banner-04.jpg",
       isOffSection: false,
       name: "bags",
     },
@@ -54,11 +55,14 @@ const Category = () => {
               <div key={index} className="  flex flex-col mx-3 ">
                 {row.map((col, index) => {
                   return !col.isOffSection ? (
-                    <div key={index} className={` relative w-full my-3 `}>
+                    <div
+                      key={index}
+                      className={` overflow-hidden  relative w-full my-3 `}
+                    >
                       <img
                         src={col.image}
                         alt="Image 1"
-                        className="w-full  h-auto grow transition duration-300 ease-in transform hover:scale-[1.03]  "
+                        className="w-full     transition duration-300 ease-in transform hover:scale-110  "
                       />
                       <button
                         className="  h-10 absolute bottom-10 left-1/2 transform
@@ -66,13 +70,15 @@ const Category = () => {
                   hover:text-white transition-colors duration-300 ease-in hover:transition-delay-300 px-10 py-2 "
                         onClick={() => handleButtonClick("Image 1")}
                       >
-                        <a className=" uppercase"   href="#">{col.name}</a>
+                        <a className=" uppercase" href="#">
+                          {col.name}
+                        </a>
                       </button>
                     </div>
                   ) : (
                     <div
                       key={index}
-                      className={` w-full my-3 bg-[rgb(242,242,242)] flex flex-col py-10 px-10 items-center justify-center  h-full  `}
+                      className={` w-full my-3   relative  bg-[rgb(242,242,242)] flex flex-col py-10 px-10 items-center justify-center    `}
                     >
                       <h1 className="  text-black   text-center  font-semibold  text-4xl">
                         Sign up & get <br /> 20% off
